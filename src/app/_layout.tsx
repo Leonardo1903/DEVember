@@ -1,5 +1,10 @@
 import { Stack } from "expo-router";
-import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
+import {
+  useFonts,
+  Inter_900Black,
+  Inter_600SemiBold,
+  Inter_400Regular,
+} from "@expo-google-fonts/inter";
 import {
   AmaticSC_400Regular,
   AmaticSC_700Bold,
@@ -7,11 +12,14 @@ import {
 
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [fontsLoaded, error] = useFonts({
     Inter: Inter_900Black,
+    InterSemiBold: Inter_600SemiBold,
+    InterRegular: Inter_400Regular,
     Amatic: AmaticSC_400Regular,
     AmaticBold: AmaticSC_700Bold,
   });
@@ -26,16 +34,18 @@ export default function RootLayout() {
     SplashScreen.hideAsync();
   }
   return (
-    <Stack
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: "#9b4521",
-        },
-        headerTintColor: "#F9EDE3",
-        headerTitleAlign: "center",
-      }}
-    >
-      <Stack.Screen name="index" options={{ title: "DEVember" }} />
-    </Stack>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Stack
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: "#9b4521",
+          },
+          headerTintColor: "#F9EDE3",
+          headerTitleAlign: "center",
+        }}
+      >
+        <Stack.Screen name="index" options={{ title: "DEVember" }} />
+      </Stack>
+    </GestureHandlerRootView>
   );
 }
