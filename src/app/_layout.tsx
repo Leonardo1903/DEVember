@@ -3,6 +3,7 @@ import {
   useFonts,
   Inter_900Black,
   Inter_600SemiBold,
+  Inter_700Bold,
   Inter_400Regular,
 } from "@expo-google-fonts/inter";
 import {
@@ -20,6 +21,7 @@ export default function RootLayout() {
     Inter: Inter_900Black,
     InterSemiBold: Inter_600SemiBold,
     InterRegular: Inter_400Regular,
+    InterBold: Inter_700Bold,
     Amatic: AmaticSC_400Regular,
     AmaticBold: AmaticSC_700Bold,
   });

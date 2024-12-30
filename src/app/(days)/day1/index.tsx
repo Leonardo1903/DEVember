@@ -1,20 +1,29 @@
-import { View, Text } from "react-native";
+import { Button } from "react-native";
 import React from "react";
-import { Stack } from "expo-router";
+import { Link, Stack } from "expo-router";
+import MarkdownDisplay from "@/components/MarkdownDisplay";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function DayDetailsScreen() {
+const description = `
+# Introduction to Expo and Expo-Router
+
+Learn how to set up a new expo project and use the expo-router package to create a stack navigator to navigate between screens.
+
+
+📚 Learnings:
+- Setting up a new expo project
+- Using expo-font to load custom fonts
+- Using the expo-splash-screen package to create a splash screen
+- Using the expo-router package to create a stack navigator to navigate between screens
+`;
+
+export default function index() {
   return (
-    <View>
-      <Stack.Screen options={{ title: "Day 1" }} />
-      <Text style={{ fontFamily: "AmaticBold", fontSize: 100 }}>
-        Day Details Screen
-      </Text>
-    </View>
+    <SafeAreaView edges={["bottom"]} style={{ flex: 1 }}>
+      <Stack.Screen options={{ title: "Day 1: Introduction" }} />
+      <MarkdownDisplay>{description}</MarkdownDisplay>
+    </SafeAreaView>
   );
 }
 
-// Learnings:
-// - Learned to set up a new expo project
-// - Learned to use expo-font to load custom fonts
-// - Learned to use the expo-splash-screen package to create a splash screen
-// - Learned to use the expo-router package to create a stack navigator to navigate between screens
+
