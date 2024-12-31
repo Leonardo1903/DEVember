@@ -12,11 +12,16 @@ import {
 } from "@expo-google-fonts/amatic-sc";
 
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import AnimatedSplashScreen from "@/components/AnimatedSplashScreen";
 
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
+
 export default function RootLayout() {
+  const [appReady, setAppReady] = useState(false);
+  const [splashAnimationFinished, setSplashAnimationFinished] = useState(false);
+
   const [fontsLoaded, error] = useFonts({
     Inter: Inter_900Black,
     InterSemiBold: Inter_600SemiBold,
@@ -28,13 +33,25 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (fontsLoaded || error) {
-      SplashScreen.hideAsync();
+      // SplashScreen.hideAsync();
+      setAppReady(true);
     }
   }, [fontsLoaded, error]);
 
-  if (!fontsLoaded && !error) {
-    SplashScreen.hideAsync();
+   const showAnimatedSplash = !appReady || !splashAnimationFinished;
+  if (showAnimatedSplash) {
+    return (
+      <AnimatedSplashScreen
+        onAnimationFinish={(isCancelled) => {
+          if (!isCancelled) {
+            setSplashAnimationFinished(true);
+          }
+        }}
+      />
+    );
   }
+
+  
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Stack
