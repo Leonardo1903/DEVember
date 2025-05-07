@@ -17,7 +17,7 @@ Create a Tinder-like swipe animation using React Native Reanimated and Gesture H
 export default function index() {
   return (
     <SafeAreaView edges={["bottom"]} style={{ flex: 1 }}>
-      <Stack.Screen options={{ title: "Day 5: Tinder" }} />
+      <Stack.Screen options={{ title: "Day 6: Tinder" }} />
 
       <MarkdownDisplay>{description}</MarkdownDisplay>
 
